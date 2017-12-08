@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommandLineTools.iml" filepath="$PROJECT_DIR$/.idea/modules/CommandLineTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommandLineTools_main.iml" filepath="$PROJECT_DIR$/.idea/modules/CommandLineTools_main.iml" group="CommandLineTools" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CommandLineTools_test.iml" filepath="$PROJECT_DIR$/.idea/modules/CommandLineTools_test.iml" group="CommandLineTools" />
+    </modules>
+  </component>
+</project>
