@@ -2,7 +2,7 @@ package SubMenus
 
 import java.util.*
 
-class IntResponse : Menu()
+class NumberedLines : Menu()
 {
     private var loopBreak: ((Int) -> Boolean) = {
         _ ->
@@ -52,7 +52,7 @@ class IntResponse : Menu()
 
 
 
-    fun repeatIf(predicate : (Int) -> Boolean): IntResponse {
+    fun repeatIf(predicate : (Int) -> Boolean): NumberedLines {
         this.loopBreak = predicate
         return this
     }

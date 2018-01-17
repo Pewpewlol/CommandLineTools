@@ -1,10 +1,21 @@
 package SubMenus
 
-class Command : Menu()
+
+data class Command(
+        var name : String,
+        var description : String
+) : Comparable<Command>
 {
-    fun create(vararg menuCommands : String, insideFunction: () -> Unit): Unit {
-
-
-        
+    override fun compareTo(other: Command): Int {
+        return other.hashCode()
     }
+
+    lateinit var execute : () -> Unit
+
+    fun implement(init: () -> Unit) {
+
+        execute = init
+
+    }
+
 }

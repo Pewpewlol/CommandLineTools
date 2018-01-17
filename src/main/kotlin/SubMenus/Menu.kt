@@ -1,51 +1,76 @@
 package SubMenus
 
 
+
+
+
+
 open class Menu(
         var cancelationText : String = "Canceled"
 
 )
 {
-    private var IntResponse : IntResponse? = null
+
+    private var NumberedLines: NumberedLines? = null
     get() {
         if (field == null)
-            field = IntResponse()
+            field = NumberedLines()
         return field
     }
-    private var Command : Command? = null
+    private var CommandLine: CommandLine? = null
     get() {
         if (field == null)
-            field = Command()
+            field = CommandLine()
         return field
     }
 
-    fun numbered(): IntResponse {
-        return IntResponse as IntResponse
+    fun numbered(): NumberedLines {
+        return NumberedLines as NumberedLines
     }
 
-    fun commandLine(): Command {
-        return this.Command as Command
-
-
+    fun commandLine(): CommandLine {
+        return CommandLine as CommandLine
     }
+
 
 }
 
 fun main(args: Array<String>) {
     var menu : Menu = Menu()
 
-     menu.numbered()
-            .repeatIf { it > 4 }
-            .create("Fisch", "Affe")
-            {
-                menu, response ->
-                when(response)
-                {
-                    is Int -> println("$response ist ein Integer")
+//     menu.numbered()
+//            .repeatIf { it > 4 }
+//            .create("Fisch", "Affe")
+//            {
+//                menu, response ->
+//                when(response)
+//                {
+//                    is Int -> println("$response ist ein Integer")
+//
+//                }
+//            }
 
-                }
-            }
+    menu
+//            .commandLine()
+//            .addExit("Baustelle")
+//            .create("Fisch","Affe")
+//            {
+//                menu, response ->
+//                when(response)
+//                {
+//
+//                    "Fisch" -> println("It was true")
+//                    "Affe" -> println("Ape")
+//                }
+//            }
+    var comm : Command = Command("Fisch", "fishy")
+    comm.implement {
+        println(comm.name)
+    }
 
+    menu    .commandLine()
+            .addCommand(comm)
+            .create()
 
 }
 
