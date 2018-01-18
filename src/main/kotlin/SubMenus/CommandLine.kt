@@ -12,7 +12,9 @@ class CommandLine(
 {
     private var commandList : TreeSet<Command> = TreeSet()
     private val exitCommand : ArrayList<String> = ArrayList()
-    private var longestName : Int = 0;
+    private var longestName : Int = 0
+    private var executed : Boolean = true
+    var commandNotFound : String = "Command not found"
     init {
         exitCommand.add(":q")
         exitCommand.add("exit")
@@ -27,6 +29,13 @@ class CommandLine(
         }
         return this
     }
+
+    fun setcommandNotFound(text : String): CommandLine {
+        commandNotFound = text
+        return this
+    }
+
+
     fun addCommand (Command : Command) : CommandLine
     {
         commandList.add(Command)
@@ -43,77 +52,71 @@ class CommandLine(
                 longestName = it.length
         }
     }
-    fun create(vararg menuCommands : String, insideFunction: (Menu,String) -> Unit): Unit {
+
+    fun create(): Unit {
 
         while (true)
         {
-            print(printString)
-            val scan : Scanner = Scanner(System.`in`)
+            executed = false // set excution of Command not done
 
+
+            print(printString) // print the Names of the Commands
+
+            val scan : Scanner = Scanner(System.`in`)
             response = scan.next()
+
+            // Exits the Programm
             exitCommand.forEach{
                 if (response == it)
                     return
             }
+
             if (response == "help")
             {
-                menuCommands.forEach {
-                    println(it)
+                executed = true
+                getLongestName()
+
+                commandList.forEach {
+                    print("${it.name}")
+                    for (zähler in 0..(longestName-it.name.length))
+                        print(" ")
+                    println(": ${it.description}")
+                }
+                exitCommand.forEach {
+                    print("$it")
+                    for (zähler in 0..longestName-it.length)
+                        print(" ")
+                    println(": exits the Programm")
                 }
             }
             else
             {
-                insideFunction(this,response)
-            }
-
-
-        }
-
-
-    }
-    fun create(): Unit {
-
-    while (true)
-    {
-        print(printString)
-        val scan : Scanner = Scanner(System.`in`)
-        getLongestName()
-        response = scan.next()
-        exitCommand.forEach{
-            if (response == it)
-                return
-        }
-        if (response == "help")
-        {
-
-            commandList.forEach {
-                print("${it.name}")
-                for (zähler in 0..(longestName-it.name.length))
-                    print(" ")
-                println(": ${it.description}")
-            }
-            exitCommand.forEach {
-                print("$it")
-                for (zähler in 0..longestName-it.length)
-                    print(" ")
-                println(": exits the Programm")
-            }
-        }
-        else
-        {
-            commandList.forEach{
-                if (response == it.name)
-                {
-                    it.execute()
-                    return@forEach
+                commandList.forEach{
+                    if (response == it.name)
+                    {
+                        it.execute()
+                        executed = true
+                        return@forEach
+                    }
                 }
+
             }
+
+            if (!executed)
+            {
+                println(commandNotFound)
+            }
+
+
+
         }
+
+
 
 
     }
 
 
-}
+
 
 }

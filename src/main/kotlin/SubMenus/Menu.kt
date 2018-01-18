@@ -50,7 +50,7 @@ fun main(args: Array<String>) {
 //                }
 //            }
 
-    menu
+//    menu
 //            .commandLine()
 //            .addExit("Baustelle")
 //            .create("Fisch","Affe")
@@ -69,6 +69,7 @@ fun main(args: Array<String>) {
     }
 
     menu    .commandLine()
+            .setcommandNotFound("Fischig")
             .addCommand(comm)
             .create()
 

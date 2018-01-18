@@ -1,7 +1,7 @@
 package SubMenus
 
 
-data class Command(
+class Command(
         var name : String,
         var description : String
 ) : Comparable<Command>
