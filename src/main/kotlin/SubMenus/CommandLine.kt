@@ -15,6 +15,7 @@ class CommandLine(
     private var longestName : Int = 0
     private var executed : Boolean = true
     var commandNotFound : String = "Command not found"
+
     init {
         exitCommand.add(":q")
         exitCommand.add("exit")
@@ -30,7 +31,7 @@ class CommandLine(
         return this
     }
 
-    fun setcommandNotFound(text : String): CommandLine {
+    fun setCommandNotFound(text : String): CommandLine {
         commandNotFound = text
         return this
     }
@@ -41,6 +42,7 @@ class CommandLine(
         commandList.add(Command)
         return this
     }
+
     private fun getLongestName() {
         commandList.forEach{
             if (it.name.length > longestName)
@@ -54,6 +56,13 @@ class CommandLine(
     }
 
     fun create(): Unit {
+
+
+        if (clearConsole)
+        {
+            clearConsole()
+        }
+
 
         while (true)
         {

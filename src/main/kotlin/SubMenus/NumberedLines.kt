@@ -8,7 +8,7 @@ class NumberedLines : Menu()
         _ ->
         false
     }
-    private var clearConsole :Boolean = false
+
     private var response : Int = -1
 
     fun  responsing(vararg menuOption: String, insideFunction: (Menu, Int) -> Unit, mylambda : () -> Unit): Unit {
