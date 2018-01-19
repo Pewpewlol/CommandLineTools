@@ -17,7 +17,7 @@ var menu : Menu = Menu()
 ## Numbered - Function
 
 
-The numbered creates a numbered output.
+The numbered - function creates a numbered output.
 
 ```kotlin
 menu        .numbered()
