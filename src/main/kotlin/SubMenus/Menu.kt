@@ -57,17 +57,17 @@ open class Menu(
 fun main(args: Array<String>) {
     var menu : Menu = Menu()
 
-//     menu.numbered()
-//            .repeatIf { it > 4 }
-//            .create("Fisch", "Affe")
-//            {
-//                menu, response ->
-//                when(response)
-//                {
-//                    is Int -> println("$response ist ein Integer")
-//
-//                }
-//            }
+     menu.numbered()
+            .repeatIf { it > 4 }
+            .create("First", "Second")
+            {
+                menu, response ->
+                when(response)
+                {
+                    is Int -> println("$response ist ein Integer")
+
+                }
+            }
 
 //    menu
 //            .commandLine()
@@ -82,16 +82,16 @@ fun main(args: Array<String>) {
 //                    "Affe" -> println("Ape")
 //                }
 //            }
-    var comm : Command = Command("Fisch", "fishy")
-    comm.implement {
-        println(comm.name)
-    }
-
-    menu    .clear(true)
-            .commandLine()
-            .setCommandNotFound("Fischig")
-            .addCommand(comm)
-            .create()
+//    var comm : Command = Command("Fisch", "fishy")
+//    comm.implement {
+//        println(comm.name)
+//    }
+//
+//    menu    .clear(true)
+//            .commandLine()
+//            .setCommandNotFound("Fischig")
+//            .addCommand(comm)
+//            .create()
 
 }
 
